@@ -6,9 +6,12 @@ import ScheduleView from './components/ScheduleView';
 import ProfileView from './components/ProfileView';
 import HistoryView from './components/HistoryView';
 import RegistrationOrderView from './components/RegistrationOrderView';
+import SplashWarning from './components/SplashWarning';
 import { generateSchedule } from './lib/scheduler';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   const [players, setPlayers] = useState(() => {
     const saved = localStorage.getItem('tennis_players');
     const parsed = saved ? JSON.parse(saved) : [];
@@ -87,10 +90,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-100 p-2 md:p-4 font-sans">
+      {showSplash && <SplashWarning onDismiss={() => setShowSplash(false)} />}
+
       <div className="max-w-[1600px] mx-auto bg-white rounded-xl shadow-xl overflow-hidden min-h-[90vh] flex flex-col">
         {/* Header */}
         <header className="bg-slate-900 text-white p-6 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight">🎾 Tennis Match Scheduler</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">🎾 동현이가 만든 대진표 생성기</h1>
           <p className="text-slate-400 text-sm mt-1">스마트 복식 대진표 생성기</p>
         </header>
 
@@ -200,6 +205,12 @@ function App() {
           )}
 
         </div>
+
+        {/* Footer */}
+        <footer className="bg-slate-50 border-t border-slate-200 p-4 text-center text-slate-400 text-xs">
+          <p>© {new Date().getFullYear()} MATCH. All rights reserved.</p>
+          <p className="mt-1">Created by <span className="font-bold text-slate-600">dong09korea</span></p>
+        </footer>
       </div>
     </div>
   );

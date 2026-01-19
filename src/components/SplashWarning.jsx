@@ -14,18 +14,13 @@ const SplashWarning = ({ onDismiss }) => {
             });
         }, 1000);
 
-        const dismissTimer = setTimeout(() => {
-            onDismiss();
-        }, 3500); // Auto dismiss after 3.5 seconds
-
         return () => {
             clearInterval(timer);
-            clearTimeout(dismissTimer);
         }
-    }, [onDismiss]);
+    }, []);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black animate-fade-in cursor-pointer" onClick={onDismiss}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black animate-fade-in cursor-default">
             <div className="max-w-2xl w-full p-8 text-center text-white border-4 border-red-600 bg-black/90 shadow-[0_0_50px_rgba(220,38,38,0.5)]">
                 <div className="mb-6">
                     <h1 className="text-5xl font-extrabold tracking-widest text-red-600 mb-2 uppercase drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]">WARNING</h1>
@@ -50,8 +45,19 @@ const SplashWarning = ({ onDismiss }) => {
                     </p>
                 </div>
 
-                <div className="mt-8 text-sm text-gray-500 animate-pulse">
-                    SYSTEM LOADING... {countdown > 0 ? countdown : 'READY'}
+                <div className="mt-8 text-sm text-gray-500 min-h-[60px] flex items-center justify-center">
+                    {countdown > 0 ? (
+                        <div className="animate-pulse">
+                            SYSTEM LOADING... {countdown}
+                        </div>
+                    ) : (
+                        <button
+                            onClick={onDismiss}
+                            className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors shadow-[0_0_20px_rgba(220,38,38,0.5)] hover:shadow-[0_0_30px_rgba(220,38,38,0.8)] animate-bounce-slight"
+                        >
+                            이해하셨습니까? 동의하고 실행하겠습니다.
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

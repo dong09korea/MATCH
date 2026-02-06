@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#1e293b"/>
+  <circle cx="256" cy="256" r="200" fill="#3b82f6"/>
+  <path d="M256,56C145.72,56,56,145.72,56,256S145.72,456,256,456s200-89.72,200-200S366.28,56,256,56ZM256,416a160,160,0,1,1,160-160A160.18,160.18,0,0,1,256,416Z" fill="#a5f3fc" opacity="0.3"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="200" fill="white" dy="20">동현</text>
+</svg>
